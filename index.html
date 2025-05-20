@@ -80,36 +80,19 @@ body {
   clip-path: polygon(0 100%, 50% 0, 100% 100%);
   z-index: 1;
 }
-
-/* Corazón centrado */
-.heart {
+.heart-image {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;
-  height: 18px;
-  background: var(--heart-color);
-  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  transition: transform 0.3s ease;
 }
 
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 18px;
-  background: var(--heart-color);
-  border-radius: 50%;
-}
-
-.heart::before {
-  top: -10px;
-  left: 0;
-}
-
-.heart::after {
-  left: 10px;
-  top: 0;
+.envelope-button:hover .heart-image {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 /* Carta popup */
 .letter-popup {
@@ -173,13 +156,18 @@ body {
 </head>
 <body>
 
-  <div class="envelope-button" onclick="document.querySelector('.letter-popup').classList.add('show')">
-    <div class="heart"></div>
+  <div class="envelope-button" id="envelopeBtn" onclick="document.querySelector('.letter-popup').classList.add('show')">
+
+   
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Corazón" class="heart-image" />
+
   </div>
   
-  <div class="letter-popup" onclick="this.classList.remove('show')">
+  <div class="letter-popup" id="letterPopup" onclick="this.classList.remove('show')">
+
     <div class="letter-content" onclick="event.stopPropagation()">
-      <div class="close-btn" onclick="document.querySelector('.letter-popup').classList.remove('show')">&times;</div>
+      <div class="close-btn" id="closeBtn" onclick="document.querySelector('.letter-popup').classList.remove('show')">&times;</div>
+
       
      <h2 class="letter-title">Carta para la novia más linda del mundo ❤️</h2>
       <p>
@@ -223,19 +211,5 @@ body {
     </div>
   </div>
   
-  <script>
-    const envelopeBtn = document.getElementById("envelopeBtn");
-    const letterPopup = document.getElementById("letterPopup");
-    const closeBtn = document.getElementById("closeBtn");
-
-    envelopeBtn.addEventListener("click", () => {
-      letterPopup.classList.add("show");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      letterPopup.classList.remove("show");
-    });
-  </script>
-
 </body>
 </html>
