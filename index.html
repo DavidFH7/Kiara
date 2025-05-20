@@ -7,158 +7,164 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #fff;
-      --bg-color: rgb(255, 235, 250);
-      --envelope-color: #ecdeb8;
-      --shadow-color: rgba(0, 0, 0, 0.2);
-      --heart-color: rgba(250, 116, 172, 0.918);
-      --txt-color: #444;
-    }
-  
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-  
-    body {
-      background: var(--bg-color);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Dancing Script', cursive;
-    }
-  
-    /* Sobre botón */
-    .envelope-button {
-      width: 100px;
-      height: 60px;
-      background: var(--envelope-color);
-      position: relative;
-      cursor: pointer;
-      box-shadow: 0 4px 12px var(--shadow-color);
-      border-radius: 5px;
-      overflow: hidden;
-      transition: transform 0.2s ease;
-    }
-  
-    .envelope-button:hover {
-      transform: scale(1.05);
-    }
-  
-    /* Parte triangular superior */
-    .envelope-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      background: var(--envelope-color);
-      clip-path: polygon(0 0, 50% 100%, 100% 0);
-      z-index: 2;
-    }
-  
-    /* Cruce en forma de V inferior */
-    .envelope-button::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      background: var(--envelope-color);
-      clip-path: polygon(0 100%, 50% 0, 100% 100%);
-      z-index: 1;
-    }
-  
-    /* Corazón centrado, clásico */
-    .heart {
+  --primary: #fff;
+  --bg-color: rgb(255, 235, 250);
+  --envelope-color: #ecdeb8;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --heart-color: rgba(250, 116, 172, 0.918);
+  --txt-color: #444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-color);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Dancing Script', cursive;
+}
+
+/* Sobre botón */
+.envelope-button {
+  width: 100px;
+  height: 60px;
+  background: var(--envelope-color);
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.envelope-button:hover {
+  transform: scale(1.05);
+}
+
+/* Parte triangular superior */
+.envelope-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--envelope-color);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  z-index: 2;
+}
+
+/* Parte inferior tipo sobre */
+.envelope-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--envelope-color);
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  z-index: 1;
+}
+
+/* Corazón centrado */
+.heart {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 20px;
-  height: 20px;
-  background: var(--heart-color);
-  transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 3;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
 }
 
 .heart::before,
 .heart::after {
   content: '';
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   background: var(--heart-color);
   border-radius: 50%;
 }
 
 .heart::before {
-  top: -10px;
+  top: 0;
   left: 0;
 }
 
 .heart::after {
-  left: 10px;
   top: 0;
+  right: 0;
 }
-    /* Carta popup */
-    .letter-popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-  
-    .letter-popup.show {
-      display: flex;
-      animation: fadeIn 0.4s ease-out;
-    }
-  
-    .letter-content {
+
+.heart {
+  background: var(--heart-color);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* Carta popup */
+.letter-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.letter-popup.show {
+  display: flex;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.letter-content {
   background: var(--primary);
   border-radius: 10px;
   padding: 20px;
   width: 90%;
-  max-width: 700px; /* <-- antes 400px, ahora más ancho */
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
   box-shadow: 0 0 20px var(--shadow-color);
   position: relative;
   animation: popupIn 0.4s ease-out;
- max-height: 80vh;     /* Altura máxima del 80% del alto de la pantalla */
-  overflow-y: auto;     /* Scroll vertical si hay mucho contenido */
 }
+
 .letter-content .text {
-  font-size: 18px;
+  font-size: 20px;
   color: var(--txt-color);
-  text-align: justify;
+  text-align: center;
   line-height: 1.6;
 }
-  
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-    }
-  
-    @keyframes popupIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-  
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@keyframes popupIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
   </style>
   
 </head>
