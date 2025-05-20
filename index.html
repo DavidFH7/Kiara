@@ -132,6 +132,8 @@
   box-shadow: 0 0 20px var(--shadow-color);
   position: relative;
   animation: popupIn 0.4s ease-out;
+ max-height: 80vh;     /* Altura máxima del 80% del alto de la pantalla */
+  overflow-y: auto;     /* Scroll vertical si hay mucho contenido */
 }
 .letter-content .text {
   font-size: 18px;
