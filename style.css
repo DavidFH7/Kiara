@@ -123,9 +123,9 @@ body {
   transform: rotate(90deg);
   transition-delay: 0.4s;
 }
-@media (max-width: 600px) {
+@media (max-width: 600px) and (orientation: portrait) {
   .container > .envelope-wrapper > .envelope {
-    width: 90vw;
+    width: 80vw; /* Reducido para evitar desconfiguración */
     height: auto;
     position: relative;
     overflow: hidden;
@@ -136,9 +136,9 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    border-top: 80px solid var(--envelope-tab);
-    border-left: 45vw solid transparent;
-    border-right: 45vw solid transparent;
+    border-top: 70px solid var(--envelope-tab); /* Ajustado proporcionalmente */
+    border-left: 40vw solid transparent;
+    border-right: 40vw solid transparent;
     width: 0;
     height: 0;
   }
@@ -148,9 +148,9 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    border-bottom: 70px solid var(--envelope-cover);
-    border-left: 45vw solid var(--envelope-cover);
-    border-right: 45vw solid var(--envelope-cover);
+    border-bottom: 60px solid var(--envelope-cover); /* Ajustado proporcionalmente */
+    border-left: 40vw solid var(--envelope-cover);
+    border-right: 40vw solid var(--envelope-cover);
     width: 0;
     height: 0;
   }
@@ -182,7 +182,7 @@ body {
     width: 20px;
     height: 20px;
     position: absolute;
-    background: red; /* o usa var(--heart-color) si tienes una variable */
+    background: red;
     border-radius: 50%;
   }
 
