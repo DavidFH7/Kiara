@@ -121,8 +121,46 @@ body {
   transition-delay: 0.4s;
 }
 @media (max-width: 600px) {
+  .container > .envelope-wrapper > .envelope {
+    width: 90vw;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Mantiene proporción visual agradable */
+  }
+
+  .container > .envelope-wrapper > .envelope::before {
+    border-top: 30vw solid var(--envelope-tab);
+    border-right: 45vw solid transparent;
+    border-left: 45vw solid transparent;
+  }
+
+  .container > .envelope-wrapper > .envelope::after {
+    border-left: 45vw solid var(--envelope-cover);
+    border-right: 45vw solid var(--envelope-cover);
+    border-bottom: 35vw solid var(--envelope-cover);
+  }
+
   .letter {
-    width: 90%;
-    height: 70%;
+    width: 90vw;
+    height: 70vh;
+    font-size: 14px;
+  }
+
+  .heart {
+    width: 20px;
+    height: 20px;
+  }
+
+  .heart::before,
+  .heart::after {
+    width: 20px;
+    height: 20px;
+  }
+
+  .heart::before {
+    top: -10px;
+  }
+
+  .heart::after {
+    right: 10px;
   }
 }
