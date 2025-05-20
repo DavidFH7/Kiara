@@ -86,31 +86,32 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 18px;
   background: var(--heart-color);
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .heart::before,
 .heart::after {
-  content: '';
+  content: "";
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 18px;
   background: var(--heart-color);
   border-radius: 50%;
 }
 
 .heart::before {
-  top: -12px;
+  top: -10px;
   left: 0;
 }
 
 .heart::after {
+  left: 10px;
   top: 0;
-  left: 12px;
 }
+
 .heart {
   position: absolute;
   top: 50%;
