@@ -127,25 +127,32 @@ body {
   .container > .envelope-wrapper > .envelope {
     width: 90vw;
     height: auto;
-    aspect-ratio: 16 / 9; /* Mantiene proporción visual agradable */
   }
 
   .container > .envelope-wrapper > .envelope::before {
-    border-top: 30vw solid var(--envelope-tab);
+    border-top: 100px solid var(--envelope-tab);
     border-right: 45vw solid transparent;
     border-left: 45vw solid transparent;
   }
 
   .container > .envelope-wrapper > .envelope::after {
+    border-top: 0;
     border-left: 45vw solid var(--envelope-cover);
     border-right: 45vw solid var(--envelope-cover);
-    border-bottom: 35vw solid var(--envelope-cover);
+    border-bottom: 80px solid var(--envelope-cover);
   }
 
   .letter {
-    width: 90vw;
-    height: 70vh;
+    width: 100%;
+    height: 65vh;
     font-size: 14px;
+    padding: 15px;
+  }
+
+  .letter > .text {
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: justify;
   }
 
   .heart {
