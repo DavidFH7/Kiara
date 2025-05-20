@@ -1,6 +1,6 @@
 :root{
   --primary: #fff;
-  --bg-color: rgb(5,53,61);
+  --bg-color: rgb(255, 235, 250);
   --bg-envelope-color:#f5edd1;
   --envelope-tab: #ecdeb8;
   --envelope-cover: #e6cfa7;
@@ -12,19 +12,25 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: var(--bg-color); /* Puedes definir esta variable en :root o cambiar por un color directo */
+  background: var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  font-family: 'Dancing Script', cursive; /* Estilo elegante */
 }
+
 .container {
-  height:100vh;
-  display: grid;
-  place-items:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
 }
 .container > .envelope-wrapper{
   background: var(--bg-envelope-color);
   box-shadow: 0 0 40px var(--shadow-color);
+  
 }
 .container> .envelope-wrapper > .envelope{
   position: relative;
@@ -56,7 +62,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 90%;
   height: 100%;
   background: var(--primary);
   padding: 20px;
@@ -70,10 +76,12 @@ body {
 }
 
 .letter> .text{
-  font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 10px;
-  color: var(--txt-color);
-  text-align: left;
+  .letter > .text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px;
+    color: var(--txt-color);
+    text-align: left;
+  }
 }
 .heart{
   position: absolute;
@@ -124,10 +132,11 @@ body {
   .container > .envelope-wrapper > .envelope {
     width: 90vw;
     height: auto;
+    aspect-ratio: 16 / 9; /* Mantiene proporción visual agradable */
   }
 
   .container > .envelope-wrapper > .envelope::before {
-    border-top: 27vw solid var(--envelope-tab);
+    border-top: 30vw solid var(--envelope-tab);
     border-right: 45vw solid transparent;
     border-left: 45vw solid transparent;
   }
@@ -139,29 +148,28 @@ body {
   }
 
   .letter {
-    width: 90vw;
-    height: 60vh;
-    font-size: 13px;
-    padding: 15px;
+    width: 80vw;
+    height: 70vh;
+    font-size: 14px;
   }
 
   .heart {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .heart::before,
   .heart::after {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .heart::before {
-    top: -9px;
+    top: -10px;
   }
 
   .heart::after {
-    right: 9px;
+    right: 10px;
   }
 }
 
