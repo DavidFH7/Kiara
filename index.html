@@ -1,21 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carta para mi amorcito</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Animado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #fff;
+      --bg-color: rgb(255, 235, 250);
+      --envelope-color: #ecdeb8;
+      --shadow-color: rgba(0, 0, 0, 0.2);
+      --heart-color: rgba(250, 116, 172, 0.918);
+      --txt-color: #444;
+    }
+  
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+  
+    body {
+      background: var(--bg-color);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Dancing Script', cursive;
+    }
+  
+    /* Sobre botón */
+    .envelope-button {
+      width: 100px;
+      height: 60px;
+      background: var(--envelope-color);
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+  
+    .envelope-button:hover {
+      transform: scale(1.05);
+    }
+  
+    /* Parte triangular superior */
+    .envelope-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: var(--envelope-color);
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      z-index: 2;
+    }
+  
+    /* Cruce en forma de V inferior */
+    .envelope-button::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: var(--envelope-color);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+      z-index: 1;
+    }
+  
+    /* Corazón centrado, clásico */
+    .heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--heart-color);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  z-index: 3;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--heart-color);
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+    /* Carta popup */
+    .letter-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+  
+    .letter-popup.show {
+      display: flex;
+      animation: fadeIn 0.4s ease-out;
+    }
+  
+    .letter-content {
+  background: var(--primary);
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 700px; /* <-- antes 400px, ahora más ancho */
+  box-shadow: 0 0 20px var(--shadow-color);
+  position: relative;
+  animation: popupIn 0.4s ease-out;
+}
+.letter-content .text {
+  font-size: 18px;
+  color: var(--txt-color);
+  text-align: justify;
+  line-height: 1.6;
+}
+  
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  
+    @keyframes popupIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+  
 </head>
 <body>
-  <div class="container">
-    <div class="envelope-wrapper ">
-      <div class="envelope">
-        <div class="letter">
-          <div class="text">
-            <strong>Para mi linda Novia ❤️</strong>
-            <p>
-              Hola mi amor, se que hoy no podremos vernos pero eso no impide que pueda hacerte
+
+  <div class="envelope-button" onclick="document.querySelector('.letter-popup').classList.add('show')">
+    <div class="heart"></div>
+  </div>
+  
+  <div class="letter-popup" onclick="this.classList.remove('show')">
+    <div class="letter-content" onclick="event.stopPropagation()">
+      <div class="close-btn" onclick="document.querySelector('.letter-popup').classList.remove('show')">&times;</div>
+      <div class="text">Carta para la novia mas linda del mundo ❤️</div>
+      <p>
+        Hola mi amor, se que hoy no podremos vernos pero eso no impide que pueda hacerte
               una carta con tanto amor para tí, me encanta todas las cosas que estamos viviendo
               a diario, se que el Señor nos guiará en nuestro camino personal y como pareja 
               porque nos ama, estoy tan feliz de poder tener una novia muy linda en todos los 
@@ -51,21 +207,23 @@
               cuenta porque quiero ser parte de tu vida completamente, quiero saber todo sobre tí, no
               quiero perderme de nada de lo que te ocurra, FELIZ DOS MESES mi AMOR y que cumplamos muchos 
               más hasta la eternidad ❤️
-
-            
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="heart"></div>
+      </p>
     </div>
   </div>
-
+  
   <script>
-    const envelope = document.querySelector('.envelope-wrapper');
-    envelope.addEventListener('click', () => {
-      envelope.classList.toggle('flap');
+    const envelopeBtn = document.getElementById("envelopeBtn");
+    const letterPopup = document.getElementById("letterPopup");
+    const closeBtn = document.getElementById("closeBtn");
+
+    envelopeBtn.addEventListener("click", () => {
+      letterPopup.classList.add("show");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      letterPopup.classList.remove("show");
     });
   </script>
+
 </body>
 </html>
