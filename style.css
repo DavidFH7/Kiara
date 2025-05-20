@@ -125,7 +125,7 @@ body {
 }
 @media (max-width: 600px) and (orientation: portrait) {
   .container > .envelope-wrapper > .envelope {
-    width: 70vw; /* Más pequeño para que no se desconfigure */
+    width: 70vw;
     height: auto;
     position: relative;
     overflow: hidden;
@@ -136,7 +136,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    border-top: 60px solid var(--envelope-tab);
+    border-top: 25vw solid var(--envelope-tab); /* proporción vertical basada en ancho */
     border-left: 35vw solid transparent;
     border-right: 35vw solid transparent;
     width: 0;
@@ -148,7 +148,7 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    border-bottom: 50px solid var(--envelope-cover);
+    border-bottom: 20vw solid var(--envelope-cover);
     border-left: 35vw solid var(--envelope-cover);
     border-right: 35vw solid var(--envelope-cover);
     width: 0;
@@ -157,7 +157,7 @@ body {
 
   .letter {
     width: 100%;
-    height: 55vh;
+    height: 50vh;
     font-size: 13px;
     padding: 10px;
     box-sizing: border-box;
@@ -174,6 +174,7 @@ body {
     width: 18px;
     height: 18px;
     position: relative;
+    margin: auto;
   }
 
   .heart::before,
@@ -182,7 +183,7 @@ body {
     width: 18px;
     height: 18px;
     position: absolute;
-    background: red; /* o usa var(--heart-color) */
+    background: var(--heart-color, red);
     border-radius: 50%;
   }
 
